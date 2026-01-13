@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Invictus Streaming</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Tipografía parecida (puedes cambiarla luego) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- Fondo/Hero -->
+    <div id="hero" class="hero">
+      <div class="hero__bg" id="heroBg"></div>
+      <div class="hero__overlay"></div>
+
+      <!-- Top Bar -->
+      <header class="topbar">
+        <button class="glassBtn iconBtn" id="btnMenu" aria-label="Menú">
+          <!-- icon hamburguesa -->
+          <svg viewBox="0 0 24 24" class="icon">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <button class="glassPill" id="btnLogin" type="button">
+          Iniciar sesión
+        </button>
+
+        <button class="glassBtn iconBtn" id="btnShare" aria-label="Compartir">
+          <!-- icon share -->
+          <svg viewBox="0 0 24 24" class="icon">
+            <path d="M16 8a3 3 0 10-2.83-4H13a3 3 0 003 4zm-8 8a3 3 0 10-2.83-4H5a3 3 0 003 4zm8 8a3 3 0 10-2.83-4H13a3 3 0 003 4z"/>
+            <path d="M8 14l8-4M8 10l8 4" />
+          </svg>
+        </button>
+      </header>
+
+      <!-- Botón búsqueda (solo visual por ahora) -->
+      <button class="glassBtn floatingSearch iconBtn" id="btnSearch" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" class="icon">
+          <path d="M10.5 3a7.5 7.5 0 105.2 12.9l3.4 3.4 1.4-1.4-3.4-3.4A7.5 7.5 0 0010.5 3z"/>
+          <path d="M10.5 5a5.5 5.5 0 110 11 5.5 5.5 0 010-11z"/>
+        </svg>
+      </button>
+
+      <!-- Centro: título y rating -->
+      <main class="centerContent">
+        <h1 class="brandTitle" id="brandTitle">INVICTUS</h1>
+
+        <button class="ratingLine" id="btnOpenRatings" type="button">
+          <span class="ratingValue" id="ratingValue">4.8</span>
+          <span class="star">★</span>
+          <span class="ratingCount" id="ratingCount">(0)</span>
+        </button>
+      </main>
+
+      <!-- Tarjetas inferiores -->
+      <section class="cards">
+        <!-- Card 1: plataformas -->
+        <div class="glassCard">
+          <div class="cardTitle" id="platformsTitle">Vuelve a entrar</div>
+          <div class="hScroll" id="platformsRow">
+            <!-- items dinámicos -->
+          </div>
+        </div>
+
+        <!-- Card 2: capturas -->
+        <div class="glassCard">
+          <div class="cardTitle" id="screensTitle">Para ti</div>
+          <div class="screensRow" id="screensRow">
+            <!-- carrusel dinámico -->
+          </div>
+        </div>
+
+        <!-- Reseñas (lista aprobadas) -->
+        <div class="glassCard reviewsCard">
+          <div class="cardTitle">Reseñas</div>
+          <div id="reviewsList" class="reviewsList"></div>
+        </div>
+      </section>
+
+      <!-- Bottom Nav -->
+      <nav class="bottomNav">
+        <button class="navBtn active" data-tab="home" aria-label="Inicio">
+          <svg viewBox="0 0 24 24" class="navIcon">
+            <path d="M4 10.5l8-7 8 7V20a1 1 0 01-1 1h-5v-6H10v6H5a1 1 0 01-1-1v-9.5z"/>
+          </svg>
+        </button>
+
+        <button class="navBtn" data-tab="search" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" class="navIcon">
+            <path d="M10.5 3a7.5 7.5 0 105.2 12.9l3.4 3.4 1.4-1.4-3.4-3.4A7.5 7.5 0 0010.5 3z"/>
+            <path d="M10.5 5a5.5 5.5 0 110 11 5.5 5.5 0 010-11z"/>
+          </svg>
+        </button>
+
+        <button class="navBtn" data-tab="platforms" aria-label="Plataformas">
+          <svg viewBox="0 0 24 24" class="navIcon">
+            <path d="M6 7h12M6 12h12M6 17h12"/>
+          </svg>
+        </button>
+
+        <button class="navBtn" data-tab="gallery" aria-label="Capturas">
+          <svg viewBox="0 0 24 24" class="navIcon">
+            <path d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6z"/>
+            <path d="M8 14l2-2 3 3 3-4 2 3"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Drawer (sidebar) -->
+    <aside class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer__panel">
+        <div class="drawer__header">
+          <div class="drawer__title">Menú</div>
+          <button class="iconBtn drawer__close" id="btnCloseDrawer" aria-label="Cerrar">
+            ✕
+          </button>
+        </div>
+
+        <div class="drawer__items">
+          <button class="drawerItem" data-tab="home">Inicio</button>
+          <button class="drawerItem" data-tab="search">Buscar</button>
+          <button class="drawerItem" data-tab="platforms">Plataformas</button>
+          <button class="drawerItem" data-tab="gallery">Capturas</button>
+        </div>
+      </div>
+      <div class="drawer__backdrop" id="drawerBackdrop"></div>
+    </aside>
+
+    <!-- Bottom Sheet: Ratings -->
+    <div class="sheet" id="ratingsSheet" aria-hidden="true">
+      <div class="sheet__panel">
+        <div class="sheet__handle"></div>
+
+        <div class="sheet__header">
+          <div class="sheet__title">Calificaciones</div>
+          <button class="iconBtn" id="btnCloseRatings" aria-label="Cerrar">✕</button>
+        </div>
+
+        <div class="sheet__summary">
+          <div class="sheet__big">
+            <span id="sheetRatingValue">4.8</span> <span class="star">★</span>
+          </div>
+          <div class="sheet__small" id="sheetRatingCount">0 reseñas</div>
+        </div>
+
+        <div class="breakdown" id="breakdown">
+          <!-- 5 a 1 -->
+        </div>
+
+        <div class="sheet__actions">
+          <button class="primaryBtn" id="btnOpenReviewForm">Publicar reseña</button>
+        </div>
+
+        <div class="sheet__hint">
+          Puedes deslizar esta ventana. (Scroll dentro si hay mucho contenido)
+        </div>
+      </div>
+      <div class="sheet__backdrop" id="ratingsBackdrop"></div>
+    </div>
+
+    <!-- Bottom Sheet: Formulario Reseña -->
+    <div class="sheet" id="reviewSheet" aria-hidden="true">
+      <div class="sheet__panel">
+        <div class="sheet__handle"></div>
+
+        <div class="sheet__header">
+          <div class="sheet__title">Publicar reseña</div>
+          <button class="iconBtn" id="btnCloseReview" aria-label="Cerrar">✕</button>
+        </div>
+
+        <form id="reviewForm" class="form">
+          <label class="field">
+            <span>Nombre de usuario</span>
+            <input id="fUsername" type="text" maxlength="24" required placeholder="Ej. Angel" />
+          </label>
+
+          <label class="field">
+            <span>Calificación</span>
+            <select id="fRating" required>
+              <option value="5">5 ★★★★★</option>
+              <option value="4">4 ★★★★</option>
+              <option value="3">3 ★★★</option>
+              <option value="2">2 ★★</option>
+              <option value="1">1 ★</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Reseña</span>
+            <textarea id="fText" rows="4" maxlength="350" required placeholder="Escribe tu reseña..."></textarea>
+            <div class="charCount"><span id="charNow">0</span>/350</div>
+          </label>
+
+          <button class="primaryBtn" type="submit" id="btnSubmitReview">
+            Enviar (queda pendiente de aprobación)
+          </button>
+
+          <div class="formNote">
+            Tu reseña se mostrará cuando sea aprobada.
+          </div>
+        </form>
+      </div>
+      <div class="sheet__backdrop" id="reviewBackdrop"></div>
+    </div>
+
+    <!-- Lightbox para capturas -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox__close" id="btnCloseLightbox" aria-label="Cerrar">✕</button>
+      <button class="lightbox__nav left" id="btnPrevImg" aria-label="Anterior">‹</button>
+      <img id="lightboxImg" alt="Captura" />
+      <button class="lightbox__nav right" id="btnNextImg" aria-label="Siguiente">›</button>
+      <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
+    </div>
+
+    <script type="module" src="./firebase.js"></script>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
