@@ -505,7 +505,7 @@ body{ background:#0b0b0f; color:var(--text); }
   margin-top: 14px;
   padding: 14px;
   border-radius: 22px;
-  background: rgba(255,255,255,.96);
+  background: rgba(20, 20, 28, .92);
   color: #111;
   border: 1px solid rgba(255,255,255,.20);
   box-shadow: 0 14px 40px rgba(0,0,0,.22);

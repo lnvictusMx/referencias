@@ -27,17 +27,11 @@
 
         <button class="iconBtn glassBtn" id="btnShare" aria-label="Compartir">
           <svg class="icon" viewBox="0 0 24 24">
-            <path
-              d="M15 8a3 3 0 1 0-2.83-4"
-            ></path>
+            <path d="M15 8a3 3 0 1 0-2.83-4"></path>
             <path d="M16 8l-8 4"></path>
             <path d="M8 12l8 4"></path>
-            <path
-              d="M9 20a3 3 0 1 0-2.83-4"
-            ></path>
-            <path
-              d="M21 12a3 3 0 1 0-2.83-4"
-            ></path>
+            <path d="M9 20a3 3 0 1 0-2.83-4"></path>
+            <path d="M21 12a3 3 0 1 0-2.83-4"></path>
           </svg>
         </button>
       </header>
@@ -46,9 +40,7 @@
       <div class="floatingSearch">
         <button class="iconBtn glassBtn" id="btnSearch" aria-label="Buscar">
           <svg class="icon" viewBox="0 0 24 24">
-            <path
-              d="M21 21l-4.35-4.35"
-            ></path>
+            <path d="M21 21l-4.35-4.35"></path>
             <circle cx="11" cy="11" r="7"></circle>
           </svg>
         </button>
@@ -148,13 +140,15 @@
             <div class="sheet__big" id="sheetRatingValue">4.8</div>
             <div class="sheet__small" id="sheetRatingCount">0 reseñas</div>
           </div>
-          <div class="sheet__actions">
-            <button class="primaryBtn" id="btnOpenReviewForm">Publicar reseña</button>
-            <div class="sheet__hint">Puedes deslizar para ver más.</div>
-          </div>
         </div>
 
         <div class="breakdown" id="breakdown"></div>
+
+        <!-- ✅ MOVIDO: botón + hint debajo de la tabla y arriba de "Reseñas" -->
+        <div class="sheet__actions sheet__actions--below">
+          <button class="primaryBtn" id="btnOpenReviewForm">Publicar reseña</button>
+          <div class="sheet__hint">Puedes deslizar para ver más.</div>
+        </div>
 
         <!-- ✅ NUEVO: lista de reseñas dentro del modal (deslizable) -->
         <div class="sheetReviewsWrap" id="sheetReviewsWrap">
