@@ -48,11 +48,14 @@ body{
   top:0;
   left:0;
   right:0;
-  height: 50vh; /* ✅ mitad de pantalla */
+  height: 50vh;
   background-size:cover;
   background-position:center;
-  transform: scale(1.03);
+
+  /* ✅ FIX: quitar reescalado que borra */
+  transform: none;
 }
+
 
 /* ✅ Overlay SOLO arriba (mitad de pantalla) */
 .hero__overlay{
@@ -60,10 +63,16 @@ body{
   top:0;
   left:0;
   right:0;
-  height: 50vh; /* ✅ mitad de pantalla */
+  height: 50vh;
+
+  /* ✅ solo oscurecer, sin blur */
   background: rgba(18, 18, 24, .55);
-  backdrop-filter: blur(2px);
+
+  /* ✅ FIX: quitar blur real */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
+
 
 .topbar{
   position:relative;
