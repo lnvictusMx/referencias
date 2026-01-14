@@ -189,23 +189,8 @@ function renderHero() {
 
   const heroBg = $("heroBg");
   if (heroBg) {
-    if (s.heroImageUrl) {
-      heroBg.style.backgroundImage = `url("${s.heroImageUrl}")`;
-    } else {
-      heroBg.style.backgroundImage = `linear-gradient(120deg, #1a0b24, #0b0b0f)`;
-    }
-  }
-
-  // ✅ Logo arriba del título (desde Firestore: settings/public -> defaultLogoUrl)
-  const brandLogo = $("brandLogo");
-  if (brandLogo) {
-    if (s.defaultLogoUrl) {
-      brandLogo.src = s.defaultLogoUrl;
-      brandLogo.style.display = "block";
-    } else {
-      brandLogo.removeAttribute("src");
-      brandLogo.style.display = "none";
-    }
+    if (s.heroImageUrl) heroBg.style.backgroundImage = `url("${s.heroImageUrl}")`;
+    else heroBg.style.backgroundImage = `linear-gradient(120deg, #1a0b24, #0b0b0f)`;
   }
 
   const title = (s.title || "Invictus Streaming").toUpperCase();
@@ -218,7 +203,6 @@ function renderHero() {
   const screensTitle = $("screensTitle");
   if (screensTitle) screensTitle.textContent = s.screensTitle || "Para ti";
 }
-
 
 function renderRatingLine() {
   const s = state.settings;

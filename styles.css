@@ -157,15 +157,6 @@ body {
   gap: 10px;
 }
 
-.brandLogo{
-  width: 64px;
-  height: 64px;
-  border-radius: 16px; /* suave, opcional */
-  object-fit: cover;
-  display: none;       /* oculto si no hay logo */
-  box-shadow: 0 10px 30px rgba(0,0,0,.16);
-}
-
 .brandTitle {
   /* ✅ Antes: margin: 25px 0 10px; (esto rompía el centrado) */
   margin: 0;
@@ -702,7 +693,7 @@ body {
 @media (max-width: 420px) {
   .brandTitle { font-size: 44px; letter-spacing: .22em; }
   .glassPill { min-width: 140px; }
-  .screenItem { width: 240px; height: 200px; }
+  .screenItem { width: 240px; height: 420px; } /* 👈 antes 200px */
 }
 
 
