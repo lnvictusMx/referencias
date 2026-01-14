@@ -135,35 +135,34 @@ body {
 /* Oculto */
 .floatingSearch { display: none !important; }
 
-.centerContent {
-  position: relative;
-  z-index: 4;
-  text-align: center;
+.centerContent{
+  /* conserva lo que ya tienes */
   padding-top: 60px;
   padding-bottom: 35px;
-}
 
-.brandTitle {
-  margin: 25px 0 10px;
-  font-size: 52px;
-  font-weight: 800;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  text-shadow: none;
-  color: rgba(0, 0, 0, .92);
-}
+  /* nuevo: define una "caja" alta para centrar dentro */
+  height: calc(50vh - 60px - 35px);
+  min-height: 180px;
 
-/* ✅ Rating negro */
-.ratingLine {
-  border: none;
-  background: transparent;
-  color: var(--text);
-  display: inline-flex;
+  /* centra vertical y horizontal */
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  /* separaciones controladas */
   gap: 10px;
-  font-weight: 700;
-  cursor: pointer;
-  text-shadow: none;
+}
+
+.brandTitle{
+  margin: 0 !important;
+  line-height: 1.05;
+}
+
+/* Igual: sin margen extra, solo alineación */
+.ratingLine{
+  margin: 0 !important;
+  line-height: 1;
 }
 
 .ratingValue { font-size: 18px; }
