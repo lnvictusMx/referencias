@@ -132,6 +132,21 @@ body {
   stroke: rgba(255,255,255,.90) !important;
 }
 
+/* =========================
+   ✅ NUEVO: Botón WhatsApp verde en AppBar
+   ========================= */
+.whatsBtn{
+  background: #25D366 !important;
+  border: 1px solid rgba(0,0,0,.10) !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,.18) !important;
+}
+
+.whatsBtn .waIcon{
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
 /* Oculto */
 .floatingSearch { display: none !important; }
 
@@ -190,7 +205,6 @@ body {
   /* opcional */
   line-height: 1;
 }
-
 
 .ratingValue { font-size: 18px; }
 .star { font-size: 18px; color: #f5b301; }
@@ -695,7 +709,6 @@ body {
   .glassPill { min-width: 140px; }
   .screenItem { width: 240px; height: 420px; } /* 👈 antes 200px */
 }
-
 
 /* ✅ Lightbox (para que NO aparezcan las flechas al final) */
 .lightbox{

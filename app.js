@@ -253,7 +253,7 @@ function renderPlatforms() {
     item.className = "platformItem";
     item.innerHTML = `<img src="${escapeHtml(p.logoUrl)}" alt="${escapeHtml(p.name)}" loading="lazy">`;
     item.addEventListener("click", () => {
-      const url = p.whatsappUrl || state.settings?.whatsappUrl;
+      const url = p.whatsappUrl || state.settings?.whatsappDefaultUrl || state.settings?.whatsappUrl;
       if (url) window.open(url, "_blank");
     });
     row.appendChild(item);
@@ -556,8 +556,10 @@ async function sharePage() {
  *  Wire UI
  *  ========================= */
 function wireUI() {
-  // Drawer
-  $("btnMenu")?.addEventListener("click", openDrawer);
+  // Drawer (se mantiene, por si lo abres desde otro botón o tab)
+  // 👇 Ya NO abrimos drawer desde appbar (btnMenu ya no existe)
+  // $("btnMenu")?.addEventListener("click", openDrawer);
+
   $("btnCloseDrawer")?.addEventListener("click", closeDrawer);
   $("drawerBackdrop")?.addEventListener("click", closeDrawer);
 
@@ -568,8 +570,20 @@ function wireUI() {
     });
   });
 
-  // Share
-  $("btnShare")?.addEventListener("click", sharePage);
+  // ✅ AppBar: Compartir ahora es el botón IZQUIERDO
+  $("btnShareTop")?.addEventListener("click", sharePage);
+
+  // ✅ AppBar: WhatsApp ahora es el botón DERECHO (verde)
+  $("btnWhatsAppTop")?.addEventListener("click", () => {
+    const url =
+      state.settings?.whatsappDefaultUrl ||
+      state.settings?.whatsappUrl || // por si antes lo tenías así
+      "https://wa.me/";
+    window.open(url, "_blank", "noopener,noreferrer");
+  });
+
+  // ❌ Si antes existía el botón btnShare (ya no debe existir), lo dejamos inofensivo:
+  // $("btnShare")?.addEventListener("click", sharePage);
 
   // Ratings sheet
   $("btnOpenRatings")?.addEventListener("click", () => openSheet("ratingsSheet"));
@@ -601,14 +615,14 @@ function wireUI() {
   $("lightboxBackdrop")?.addEventListener("click", closeLightbox);
 
   // ✅ Swipe (deslizar) para cambiar imágenes
-  const lbTarget = $("lightboxImg") || $("lightbox"); // si quieres: deslizar en toda el área
+  const lbTarget = $("lightboxImg") || $("lightbox");
   if (lbTarget) {
     let startX = 0;
     let startY = 0;
     let active = false;
 
-    const THRESHOLD = 40;   // px mínimos para swipe
-    const V_RESTRAINT = 80; // si se mueve mucho vertical, ignorar
+    const THRESHOLD = 40;
+    const V_RESTRAINT = 80;
 
     lbTarget.addEventListener(
       "touchstart",
@@ -635,14 +649,14 @@ function wireUI() {
 
         if (Math.abs(dy) > V_RESTRAINT && Math.abs(dy) > Math.abs(dx)) return;
 
-        if (dx <= -THRESHOLD) nextImg();      // swipe izquierda => siguiente
-        else if (dx >= THRESHOLD) prevImg();  // swipe derecha => anterior
+        if (dx <= -THRESHOLD) nextImg();
+        else if (dx >= THRESHOLD) prevImg();
       },
       { passive: true }
     );
   }
 
-  // ✅ Teclado (opcional) cuando el visor está abierto
+  // ✅ Teclado cuando el visor está abierto
   document.addEventListener("keydown", (e) => {
     const lb = $("lightbox");
     if (!lb || !lb.classList.contains("open")) return;
@@ -658,6 +672,7 @@ function wireUI() {
   // Search sin funcionalidad por ahora
   $("btnSearch")?.addEventListener("click", () => alert("Búsqueda próximamente 😉"));
 }
+
 
 async function start() {
   wireUI();
