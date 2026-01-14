@@ -28,7 +28,7 @@ html,body{
 
 /* ✅ Fondo general negro */
 body{
-  background:#000;
+  background:#ffffff;
   color:var(--text);
 }
 
@@ -39,7 +39,7 @@ body{
   min-height:100vh;
   position:relative;
   overflow:hidden;
-  background:#0b0b0f; /* negro puro detrás */
+  background:#ffffff; /* negro puro detrás */
 }
 
 /* ✅ Imagen SOLO arriba (mitad de pantalla) */
