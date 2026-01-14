@@ -65,13 +65,32 @@ function closeSheet(sheetId) {
 }
 
 function setActiveTab(tab) {
+  // Acciones especiales (no cambian "pantalla" realmente)
+  if (tab === "reviews") {
+    openSheet("ratingsSheet");
+    tab = "home"; // mantenemos Home activo
+  }
+
+  if (tab === "screen") {
+    alert("Pantalla próximamente 😉");
+    tab = "home"; // mantenemos Home activo
+  }
+
+  if (tab === "whatsapp") {
+    const url =
+      state.settings?.whatsappDefaultUrl ||
+      state.settings?.whatsappUrl ||
+      "https://wa.me/";
+    window.open(url, "_blank", "noopener,noreferrer");
+    tab = "home"; // mantenemos Home activo
+  }
+
+  // Activar estado visual
   document.querySelectorAll(".navBtn").forEach((b) => {
     b.classList.toggle("active", b.dataset.tab === tab);
   });
-
-  if (tab === "search") alert("Búsqueda próximamente 😉");
-  if (tab === "bag") alert("Carrito próximamente 😉");
 }
+
 
 /** =========================
  *  Estrellas + fecha (Hoy/Ayer)
